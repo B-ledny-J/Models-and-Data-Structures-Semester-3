@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lab_1
+﻿namespace Lab_1
 {
     static class ArrayGenerator
     {

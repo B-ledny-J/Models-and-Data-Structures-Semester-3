@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lab_1
+﻿namespace Lab_1
 {
     class Program
     {
@@ -11,7 +9,7 @@ namespace Lab_1
             
             Console.Write("\nВведіть розмір масиву (10 за замовчуваннями): ");
             int size;
-            if (!int.TryParse(Console.ReadLine(), out size) || size < 1) size = 1;
+            if (!int.TryParse(Console.ReadLine(), out size) || size < 1) size = 10;
 
             Console.WriteLine("\nТипи масивів:");
             Console.WriteLine("1 - Випадковий");
@@ -21,7 +19,7 @@ namespace Lab_1
             int type;
             if (!int.TryParse(Console.ReadLine(), out type) || type < 1 || type > 3) type = 1;
 
-            int[] array = ArrayGenerator.GenerateArray(size, 0, 500, type);
+            int[] arr = ArrayGenerator.GenerateArray(size, 0, 500, type);
 
             Console.WriteLine("\nАлгоритми сортування:");
             Console.WriteLine("1 - Сортування простими включеннями");
@@ -32,27 +30,23 @@ namespace Lab_1
             if (sort < 1 || sort > 2) sort = 1;
 
             Console.WriteLine("\nПочатковий масив: ");
-            PrintArray(array);
+            Console.WriteLine(string.Join(", ", arr));
+            Console.WriteLine();
 
             SortResult result = sort switch
             {
-                1 => SortAlgorithms.InsertionSort(array, true),
-                2 => SortAlgorithms.BubbleSort(array, true),
+                1 => SortAlgorithms.InsertionSort(arr, true),
+                2 => SortAlgorithms.BubbleSort(arr, true),
                 _ => throw new ArgumentException("Неправильний вибір")
             };
 
             Console.WriteLine("\nВідсортований масив:");
-            PrintArray(array);
+            Console.WriteLine(string.Join(", ", arr))
 
             Console.WriteLine($"\nКількість порівнянь: {result.Comparisons}");
             Console.WriteLine($"Кількість обмінів: {result.Swaps}");
             Console.WriteLine($"Сумарна кількість операцій: {result.TotalOps}");
             Console.WriteLine($"Час виконання: {result.ElapsedMs} мс");
-        }
-
-        static void PrintArray(int[] arr)
-        {
-            Console.WriteLine(string.Join(", ", arr));
         }
     }
 }

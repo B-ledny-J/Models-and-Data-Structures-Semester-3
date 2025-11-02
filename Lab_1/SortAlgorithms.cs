@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Lab_1
 {
@@ -28,7 +27,7 @@ namespace Lab_1
 
                 array[j + 1] = key;
                 if (showSteps && array.Length <= 10)
-                    Console.WriteLine($"Крок після вставки ключа: {string.Join(", ", array)}");
+                    Console.WriteLine($"\nКрок після вставки ключа: {string.Join(", ", array)}");
             }
 
             sw.Stop();
