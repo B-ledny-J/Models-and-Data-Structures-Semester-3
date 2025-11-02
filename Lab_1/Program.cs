@@ -41,7 +41,7 @@
             };
 
             Console.WriteLine("\nВідсортований масив:");
-            Console.WriteLine(string.Join(", ", arr))
+            Console.WriteLine(string.Join(", ", arr));
 
             Console.WriteLine($"\nКількість порівнянь: {result.Comparisons}");
             Console.WriteLine($"Кількість обмінів: {result.Swaps}");
