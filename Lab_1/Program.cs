@@ -1,4 +1,13 @@
-﻿namespace Lab_1
+﻿/*
+* @file Program.cs
+* @author Дарчук Г.С., 525i
+* @date 05.11.2025
+* @brief Лабораторна робота №1, варіант 5
+*
+* Дослідження простих алгоритмів сортування
+*/
+
+namespace Lab_1
 {
     class Program
     {
@@ -15,9 +24,10 @@
             Console.WriteLine("1 - Випадковий");
             Console.WriteLine("2 - Впорядкований за зростанням");
             Console.WriteLine("3 - Впорядкований за спаданням");
+            Console.WriteLine("4 - Введений вручну");
             Console.Write("Виберіть тип масиву (1 за замовчуванням): ");
             int type;
-            if (!int.TryParse(Console.ReadLine(), out type) || type < 1 || type > 3) type = 1;
+            if (!int.TryParse(Console.ReadLine(), out type) || type < 1 || type > 4) type = 1;
 
             int[] arr = ArrayGenerator.GenerateArray(size, 0, 500, type);
 
@@ -35,14 +45,13 @@
 
             SortResult result = sort switch
             {
-                1 => SortAlgorithms.InsertionSort(arr, true),
-                2 => SortAlgorithms.BubbleSort(arr, true),
+                1 => SortAlgorithms.InsertionSort(arr),
+                2 => SortAlgorithms.BubbleSort(arr),
                 _ => throw new ArgumentException("Неправильний вибір")
             };
 
             Console.WriteLine("\nВідсортований масив:");
             Console.WriteLine(string.Join(", ", arr));
-
             Console.WriteLine($"\nКількість порівнянь: {result.Comparisons}");
             Console.WriteLine($"Кількість обмінів: {result.Swaps}");
             Console.WriteLine($"Сумарна кількість операцій: {result.TotalOps}");
